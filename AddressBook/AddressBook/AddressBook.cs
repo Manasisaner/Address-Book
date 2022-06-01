@@ -197,5 +197,34 @@ public  class AddressBook
         }
     }
 
+    public void AddDictionary(string name)
+    {
+        foreach (var data in addContact)
+        {
+            if (addContact.Contains(data))
+            {
+                if (data.FirstName == name)
+                {
+                    Console.WriteLine("enter unique name to store the above contact details in a dictionary");
+                    string uniqueName = Console.ReadLine().ToLower();
+                    myDict.Add(uniqueName, addContact);
+                    return;
+
+                }
+            }
+        }
+    }
+    public void DisplayDictionary(string name)
+    {
+        foreach (var data in myDict)
+        {
+            if (data.Key.Equals(name))
+            {
+                addContact = data.Value;
+            }
+            //Console.WriteLine(myDict);
+        }
+        Display();
+    }
 
 }
