@@ -226,5 +226,16 @@ public  class AddressBook
         }
         Display();
     }
+    public bool NameExists(string name)
+    {
+        foreach (var data in addContact)
+        {
+            if (data.Equals(name))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
