@@ -85,4 +85,117 @@ public  class AddressBook
         addContact.Add(contact2);
         addContact.Add(contact3);
     }
+
+    public void Display()
+    {
+        foreach (var contact in addContact)
+        {
+            Console.WriteLine("FirstName:" + " = " + contact.FirstName + "\n" + " " + "LastName:" + " = " + contact.LastName + "\n" + "Address:" + " = " + contact.Address + "\n" + "City:" + " = " + contact.City + "\n " + "State:" + " = " + contact.State + "\n" + "Zip:" + " = " + contact.Zip + " \n" + "PhoneNumber:" + " = " + contact.PhoneNumber + "\n" + "Email:" + " = " + contact.Email + "\n");
+        }
+    }
+    public void Update()
+    {
+        foreach (var contact in addContact)
+        {
+            Console.WriteLine("Enter The Number First Name");
+            string name = Console.ReadLine();
+
+            if (contact.FirstName.Equals(name))
+            {
+                Console.WriteLine("1.LastName\n2.Address\n3.City\n4.State\n5.Pin\n6.PhoneNumber\n7.Email ");
+                int optionn = Convert.ToInt32(Console.ReadLine());
+                switch (optionn)
+                {
+                    case 1:
+                        Console.WriteLine("enter the last name you want to edit : ");
+                        contact.LastName = Console.ReadLine();
+                        break;
+                    case 2:
+                        Console.WriteLine("enter the address you want to edit :");
+                        contact.Address = Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.WriteLine("enter the city: ");
+                        contact.City = Console.ReadLine();
+                        break;
+                    case 4:
+                        Console.WriteLine("enter the state you want to edit :");
+                        contact.State = Console.ReadLine();
+                        break;
+                    case 5:
+                        Console.WriteLine("enter the email you want to edit :");
+                        contact.Email = Console.ReadLine();
+                        break;
+                    case 6:
+                        Console.WriteLine("enter the zip you want to edit :");
+                        contact.Zip = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    case 7:
+                        Console.WriteLine("enter the phone you want to edit :");
+                        contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+                        break;
+                    default:
+                        Console.WriteLine("Choose the right option : ");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Name not Exist");
+            }
+            Display();
+        }
+    }
+    public void Delete()
+    {
+        Contact delete = new Contact();
+        Console.WriteLine("Enter The Number First Name");
+        string name = Console.ReadLine();
+        foreach (var contact in addContact)
+        {
+            if (contact.FirstName.Equals(name))
+            {
+                delete = contact;
+            }
+        }
+        addContact.Remove(delete);
+        Display();
+    }
+    public void AddDetails()
+    {
+        Console.WriteLine("Enter Unique to name");
+        string name = Console.ReadLine();
+        foreach (var data in addContact)
+        {
+            if (data.FirstName.Equals(name))
+            {
+                Console.WriteLine("This contact exists please enter an unique name to store this data");
+            }
+            else
+            {
+                Contact contact4 = new Contact()
+                {
+                    FirstName = name,
+                    LastName = Console.ReadLine(),
+
+                    Address = Console.ReadLine(),
+
+                    City = Console.ReadLine(),
+
+                    State = Console.ReadLine(),
+
+                    Zip = Convert.ToInt32(Console.ReadLine()),
+
+                    PhoneNumber = Convert.ToInt64(Console.ReadLine()),
+
+                    Email = Console.ReadLine(),
+
+                };
+                addContact.Add(contact4);
+            }
+            Display();
+        }
+    }
+
+
 }
